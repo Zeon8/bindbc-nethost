@@ -1,0 +1,13 @@
+{
+	"authors": [
+		"Zeon4"
+	],
+	"copyright": "Copyright © 2023, Zeon4",
+	"description": "D bindings for .NET Runtime hosting API",
+	"license": "MIT",
+	"name": "bindbc-nethost",
+	"dependencies": {
+		"bindbc-loader": "~>1.0.0"
+	},
+	"targetType": "library"
+}

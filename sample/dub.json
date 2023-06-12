@@ -1,0 +1,14 @@
+{
+	"authors": [
+		"Zeon4"
+	],
+	"copyright": "Copyright © 2023, Zeon4",
+	"dependencies": {
+		"bindbc-nethost": {
+			"path": "../"
+		}
+	},
+	"description": "Sample of hosting .NET Runtime in D.",
+	"license": "MIT",
+	"name": "bindbc-nethost-sample"
+}
