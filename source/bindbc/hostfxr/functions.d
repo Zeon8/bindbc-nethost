@@ -11,7 +11,6 @@ __gshared
     hostfxr_run_app_fn hostfxr_run_app;
     hostfxr_get_runtime_delegate_fn hostfxr_get_runtime_delegate;
     hostfxr_close_fn hostfxr_close;
-    hostfxr_get_dotnet_environment_info_result_fn hostfxr_get_dotnet_environment_info_result;
     hostfxr_get_dotnet_environment_info_fn hostfxr_get_dotnet_environment_info;
 }
 

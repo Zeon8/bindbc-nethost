@@ -17,7 +17,7 @@ version(Windows)
 else
     alias char_t = immutable(char);
 
-public enum UnmanagedCallersOnly = cast(char_t*)-1;
+enum UnmanagedCallersOnly = cast(char_t*)-1;
 
 enum hostfxr_delegate_type
 {

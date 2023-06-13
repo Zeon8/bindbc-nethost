@@ -27,7 +27,6 @@ HostfxrSupport loadHostfxr(const(char)* libName)
     bindSymbol(lib, cast(void**)&hostfxr_get_runtime_delegate, "hostfxr_get_runtime_delegate");
     bindSymbol(lib, cast(void**)&hostfxr_close, "hostfxr_close");
     bindSymbol(lib, cast(void**)&hostfxr_get_dotnet_environment_info, "hostfxr_get_dotnet_environment_info");
-    // bindSymbol(cast(void**)&hostfxr_get_dotnet_environment_info_result, "hostfxr_get_dotnet_environment_info_result");
 
     if(errorCount() != errCount) 
         return HostfxrSupport.badLibrary;
