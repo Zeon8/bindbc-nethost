@@ -1,4 +1,16 @@
-module bindbc.nethost.types;
+module bindbc.hostfxr.types;
+
+enum NethostSupport {
+    noLibrary,
+    badLibrary,
+    nethost
+}
+
+enum HostfxrSupport {
+    noLibrary,
+    badLibrary,
+    hostfxr
+}
 
 version(Windows)
     alias char_t = const(wchar);

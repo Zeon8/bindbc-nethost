@@ -1,5 +1,5 @@
-module bindbc.nethost.delegates;
-import bindbc.nethost.types;
+module bindbc.hostfxr.delegates;
+import bindbc.hostfxr.types;
 
 alias load_assembly_and_get_function_pointer_fn = extern(C) int function(
     char_t* assemblyPath, char_t* typeName, char_t* methodName, 

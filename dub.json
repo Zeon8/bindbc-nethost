@@ -9,5 +9,33 @@
 	"dependencies": {
 		"bindbc-loader": "~>1.0.0"
 	},
-	"targetType": "library"
+	"targetType": "library",
+	"configurations": [
+		{
+			"name": "dynamic",
+			"versions": ["BindNethost_Dynamic"]
+		},
+		{
+			"name": "dynamicBC",
+			"versions": ["BindNethost_Dynamic"],
+			"subConfigurations": {
+				"bindbc-loader": "yesBC"
+			},
+			"dflags": ["-betterC"]
+		},
+		{
+			"name": "static",
+			"versions": ["BindNethost_Static"],
+			"excludedSourceFiles": ["source/bindbc/nethost/binddynamic.d"]
+		},
+		{
+			"name": "staticBC",
+			"versions": ["BindNethost_Static"],
+			"excludedSourceFiles": ["source/bindbc/nethost/binddynamic.d"],
+			"subConfigurations": {
+				"bindbc-loader": "yesBC"
+			},
+			"dflags": ["-betterC"]
+		}
+	]
 }

@@ -2,29 +2,41 @@ import std.stdio;
 import std.string;
 import std.utf;
 import std.conv;
-static import std.file;
 import bindbc.nethost;
-import bindbc.nethost.nethost_dynamic;
+import bindbc.hostfxr;
+import core.stdc.stdio;
 
-void loadWithNethost()
+void loadLibraries()
 {
-    if(!loadNethost())
-        throw new Exception("Failed to load nethost.dll");
+    NethostSupport ret = loadNethost();
+    if(ret == NethostSupport.noLibrary)
+        throw new Exception("Nethost library not found");
+    else if(ret == NethostSupport.badLibrary)
+        throw new Exception("Failed to load nethost");
+
+    size_t size = FILENAME_MAX;
+    char_t[FILENAME_MAX] buffer;
+    int success = get_hostfxr_path(buffer.ptr, &size, null);
+    unloadNethost();
     
-    size_t size = 256;
-    char_t* buffer = cast(char_t*)new char_t[size];
-    int success = get_hostfxr_path(buffer, &size, null);
     if(success !is 0)
         throw new Exception("Failed to get hostfxr path, error code: " ~ success.to!string);
     
-    const(char)* path = buffer.to!string().toStringz();
-    if(!loadHostfxr(path))
-        throw new Exception("Failed to load hostfxr");
+    const(char)* path = buffer.ptr.to!string().toStringz();
+
+    HostfxrSupport ret2 = loadHostfxr(path);
+    if(ret2 == HostfxrSupport.noLibrary)
+        throw new Exception("Hostfxr not found in path " ~ buffer.ptr.to!string());
+    else if(ret2 == HostfxrSupport.badLibrary)
+    {
+        unloadHostfxr();
+        throw new Exception("Failed to load hostfxr"); 
+    }
 }
 
 void main()
 {
-    loadWithNethost();
+    loadLibraries();
 
     hostfxr_handle ctx;
     int success = hostfxr_initialize_for_runtime_config("DotNetLib/bin/Debug/net7.0/DotNetLib.runtimeconfig.json", 
