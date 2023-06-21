@@ -35,9 +35,9 @@ NethostSupport loadNethost()
     version(Windows)
         return loadNethost("nethost.dll");
     else version(linux)
-        return loadNethost("libnethost.so");
+        return loadNethost("./libnethost.so");
     else version(OSX)
-        return loadNethost("libnethost.dylib");
+        return loadNethost("./libnethost.dylib");
     else
         return NethostSupport.noLibrary;
 }

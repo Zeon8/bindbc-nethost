@@ -17,7 +17,7 @@ __gshared
 extern(C) @nogc nothrow:
 
 alias hostfxr_initialize_for_dotnet_command_line_fn = int function(
-    int argc, char_t* argv, hostfxr_initialize_parameters* parameters,
+    int argc, char_t** argv, hostfxr_initialize_parameters* parameters,
     hostfxr_handle* host_context_handle);
 
 alias hostfxr_initialize_for_runtime_config_fn = int function(
